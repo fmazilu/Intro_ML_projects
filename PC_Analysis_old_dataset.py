@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure, plot, xlabel, ylabel, show, legend, title, grid
 from scipy.linalg import svd
 
-filename = 'dataset/US_Accidents_small.csv'
+filename = 'Introduction to ML and Data Mining/Project 1/Intro_ML_projects/dataset/US_Accidents_small.csv'
 df = pd.read_csv(filename)
 
 attributeNames = np.asarray(df.columns)
