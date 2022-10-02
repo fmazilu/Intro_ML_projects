@@ -39,6 +39,7 @@ U, S, Vh = svd(X_tilde, full_matrices=False)
 # scipy.linalg.svd returns "Vh", which is the Hermitian (transpose)
 # of the vector V. So, for us to obtain the correct V, we transpose:
 V = Vh.T
+print(V)
 
 # Project the centered data onto principal component space
 Z = X_tilde @ V
@@ -83,12 +84,13 @@ k = 2
 # Much more principal components are needed to be plotted to separate the classes
 f = figure()
 title('Glass data: PCA')
+classStrs = ['Glass type '+str(e) for e in classNames]
 # Z = array(Z)
 for c in range(1, C+1):
     # select indices belonging to class c:
     class_mask = y_c == c
     plot(Z[class_mask, i], Z[class_mask, j], 'o', alpha=.5)
-legend(classNames)
+legend(classStrs)
 xlabel('PC{0}'.format(i+1))
 ylabel('PC{0}'.format(j+1))
 
@@ -100,7 +102,7 @@ for c in range(1, C+1):
     # select indices belonging to class c:
     class_mask = y_c == c
     plot(Z[class_mask, i], Z[class_mask, j], Z[class_mask, k], 'o', alpha=.5)
-legend(classNames)
+legend(classStrs)
 xlabel('PC{0}'.format(i+1))
 ylabel('PC{0}'.format(j+1))
 f.set_zlabel(f'PC{k+1}')
@@ -108,3 +110,4 @@ f.set_zlabel(f'PC{k+1}')
 # Output result to screen
 show()
 # As it can be seen the data is not separable using just 2 PCs
+# Maybe plot just the attributes that are most important in the first 3 PCs
