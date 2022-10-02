@@ -32,4 +32,4 @@ df.drop(df[(df.type == 4) | (df.type == 5) | (df.type == 6) | (df.type == 7)].in
 df.type.replace({3:1}, inplace=True)
 
 # Save data set as cvs file
-df.to_csv("dataset/glass.cvs", index=False)
+df.to_csv("dataset/glass.csv", index=False)
